@@ -1,6 +1,12 @@
+"use client"
+import { usePathname } from "next/navigation";
 import SortBy from "./SortBy";
 
 function Filter() {
+
+    const pathname = usePathname()
+    const summaryText = pathname.split('/').pop(); 
+
     return <>
         <div className="hidden md:block md:w-[12vw]">
 
@@ -16,7 +22,7 @@ function Filter() {
 
         <div className="md:hidden mx-4 overflow-hiddens my-3 w-full">
              <details className="dropdown">
-                <summary className="btn m-1 w-[80vw] sm:w-[90vw]">Sort By</summary>
+                <summary className="btn m-1 w-[80vw] sm:w-[90vw]">{summaryText === 'search' ? 'Revelance': summaryText}</summary>
                 <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-full p-2 shadow">
                    <SortBy/>
                 </ul>
