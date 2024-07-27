@@ -3,11 +3,15 @@ import { ImCross } from "react-icons/im";
 import { MdMenu } from "react-icons/md";
 import Search from "./Search";
 import Link from "next/link";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 
 function MobileMenu() {
 
+    const closeDrawer = () => {
+        const drawerCheckbox = document.getElementById("my-drawer") as HTMLInputElement;
+        if (drawerCheckbox) {
+            drawerCheckbox.checked = false;
+        }
+    };
     return <>
         <div className="drawer">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -36,14 +40,18 @@ function MobileMenu() {
                     <div>
                     <div className="md:ml-10">
                         <ul className="gap-6 text-sm">
-                            <li>
-                                <Link className="text-neutral-500 underline-offset-4 hover:text-black hover:underline text-lg" href="/search">All</Link>
+                            <li onClick={closeDrawer}>
+                                <Link className="text-neutral-500 underline-offset-4 hover:text-black hover:underline text-lg" href="/search">
+                                All
+                                </Link>
                             </li>
-                            <li>
+                            
+                            <li onClick={closeDrawer}>
                                 <Link className="text-neutral-500 underline-offset-4 hover:text-black hover:underline text-lg" href="/search/shirts">Shirts</Link>
                             </li>
-                            <li>
-                                <Link className="text-neutral-500 underline-offset-4 hover:text-black hover:underline text-lg" href="/search/stickers">Stickers</Link>
+
+                            <li onClick={closeDrawer}> 
+                                <Link className="text-neutral-500 underline-offset-4 hover:text-black hover:underline text-lg" href="/search/stickers">Stickers</Link>  
                             </li>
                         </ul>
                     </div>
